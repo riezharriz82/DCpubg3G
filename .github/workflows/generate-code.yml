@@ -4,7 +4,7 @@ on:
   repository_dispatch:
   workflow_dispatch:
   push:
-    branches: [dev]
+    branches: [ dev]
 
 env:
   IMAGE_NAME: jibber-jabber-posts-dev
@@ -13,12 +13,8 @@ jobs:
   # Run tests.
   # See also https://docs.docker.com/docker-hub/builds/automated-testing/
   test:
-    strategy:
-      matrix:
-        java: [16]
-        os: [ubuntu-latest, windows-latest]
-        
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 11
